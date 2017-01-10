@@ -28,16 +28,16 @@ class Game(object):
         image = img.copy()
         w, h = image.get_size()
         if w > W:
-            h = h / w * W * 1.0
+            h = h * 1.0/ w * W 
             w = W
             if h > H:
-                w = w / h * H * 1.0
+                w = w * 1.0/ h * H
                 h = H
         elif h > H:
-            w = w / h * H * 1.0
+            w = w * 1.0/ h * H 
             h = H
             if w > W:
-                h = h / w * W * 1.0
+                h = h * 1.0/ w * W
                 w = W
         img = pg.transform.scale(image, (int(w), int(h)))
         return img
@@ -45,7 +45,7 @@ class Game(object):
     def draw(self):
         self.screen.fill((5,5,5))
         w,h = self.img.get_size()
-        self.screen.blit(self.img,(W/2-w/2.0,H/2-h/2.0))
+        self.screen.blit(self.img,(W/2.0 -w/2.0,H/2.0 -h/2.0))
 
     def update(self,dt):
         self.time -= dt
